@@ -1,0 +1,53 @@
+html {
+    font-family: 'Playfair Display', serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+.painel {
+    margin: 10px;
+    padding: 28px;
+    box-shadow: 0 0.5px 5px rgba(0, 0, 0.15);
+}
+
+/* Área dos pontos */
+
+.scores {
+    display: flex;
+}
+
+.score {
+    flex: 1; /*Significa que vai ocupar a tela inteira */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score h1 {
+    font-weight: 300;
+}
+
+.life-bar {
+    width: 80%;
+    height: 20px;
+    border: 1px solid #AAA;
+    border-radius: 10px;
+}
+
+.life-bar .life {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    background-color: chartreuse;
+    border-radius: 10px;
+}
+
+.life-bar .life.danger {
+    background-color: crimson;
+    border-radius: 10px;
+}
