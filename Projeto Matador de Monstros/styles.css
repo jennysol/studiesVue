@@ -51,3 +51,20 @@ html {
     background-color: crimson;
     border-radius: 10px;
 }
+
+/* Área de resultado */
+
+.result {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.result .win {
+    color: darkolivegreen;
+}
+
+.result .lose {
+    color: darkred;
+}
