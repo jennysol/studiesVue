@@ -42,7 +42,6 @@ html {
     display: flex;
     justify-content: center;
     height: 100%;
-    width: 50%;
     background-color: chartreuse;
     border-radius: 10px;
 }
