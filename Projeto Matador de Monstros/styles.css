@@ -107,3 +107,32 @@ html {
     background-color: slategrey;
     color: white;
 }
+ /* Área dos logs  */
+
+ .logs ul {
+     display: flex;
+     flex-direction: column;
+     list-style: none;
+     padding: 0;
+     margin: 0px;
+     
+ }
+
+ .logs ul li {
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin: 4px 0px;
+    padding: 3px 0px;
+    font-weight: 600;
+    border-radius: 10px;
+ }
+
+.player {
+     background-color: rgb(214, 211, 211);
+}
+
+.monster {
+    background-color: rgb(238, 228, 230);
+}
