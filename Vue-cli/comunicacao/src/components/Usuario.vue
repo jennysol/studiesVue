@@ -2,10 +2,10 @@
     <div class="container">
         <h1>Componente Usuário</h1>
         <p>Esse é um componente muito legal!</p>
-        <button @click="alteraarNome">Alterar nome</button>
+        <button @click="alterarNome">Alterar nome</button>
         <hr>
         <div class="componentes">
-            <app-usuario-info />
+            <app-usuario-info :nome="nome"/>
             <app-usuario-editar />
         </div>
     </div>
