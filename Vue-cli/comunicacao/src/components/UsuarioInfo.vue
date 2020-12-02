@@ -2,7 +2,8 @@
     <div class="componente">
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
-        <p>Nome do Usúario: <strong>{{ nome }}</strong></p>
+        <p>Nome do Usúario: <strong>{{ inverterNome() }}</strong></p>
+        <button @click="reinicializarNome">Reiniciar Nome</button>
     </div>
 </template>
 
@@ -18,6 +19,14 @@ export default {
     methods: {
         inverterNome() {
             return this.nome.split('').reverse().join('')
+        },
+        reinicializarNome(){
+            const antigo = this.nome
+            this.nome = 'Pedro'
+            this.$emit('nomeMudoou', {
+                novo: this.nome,
+                antigo
+            })
         }
     },
 }
