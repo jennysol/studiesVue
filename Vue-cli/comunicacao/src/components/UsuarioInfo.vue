@@ -5,10 +5,13 @@
         <p>Nome do Usúario: <strong>{{ inverterNome() }}</strong></p>
         <p>Idade do Usuário:<strong>{{ idade }}</strong></p>
         <button @click="reinicializarNome">Reiniciar Nome</button>
+        <button @click="reiniciarFn()">Reiniciar Nome (Callback)</button>
     </div>
 </template>
 
 <script>
+import barramento from '@/barramento'
+
 export default {
     props: {
         nome: {
@@ -31,6 +34,11 @@ export default {
                 antigo
             })
         }
+    },
+    created() {
+        barramento.$on('idadeMudou', idade => {
+            this.idade = idade
+        } )
     },
 }
 </script>
