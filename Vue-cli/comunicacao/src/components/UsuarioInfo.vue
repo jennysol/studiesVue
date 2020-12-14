@@ -3,6 +3,7 @@
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
         <p>Nome do Usúario: <strong>{{ inverterNome() }}</strong></p>
+        <p>Idade do Usuário:<strong>{{ idade }}</strong></p>
         <button @click="reinicializarNome">Reiniciar Nome</button>
     </div>
 </template>
@@ -14,7 +15,9 @@ export default {
             type: String,
             // required: true,
             default: 'Anônimo'
-        }
+        },
+        reiniciarFn: Function,
+        idade: Number,
     },
     methods: {
         inverterNome() {
@@ -23,7 +26,7 @@ export default {
         reinicializarNome(){
             const antigo = this.nome
             this.nome = 'Pedro'
-            this.$emit('nomeMudoou', {
+            this.$emit('nomeMudoou', { //Comunicação filho com componente pai // PAi para filho por props 
                 novo: this.nome,
                 antigo
             })
