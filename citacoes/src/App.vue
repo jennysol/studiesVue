@@ -5,7 +5,10 @@
 			<button @click="componente = 'Citacoes'">Citações</button>
 			<button @click="componente = 'Sobre'">Sobre</button>
 		</span>
-		<component :is="componente"></component>
+		<!-- O componente não será mais destruido e criado -->
+		<keep-alive>
+			<component :is="componente"></component>
+		</keep-alive>
 	</div>
 </template>
 
