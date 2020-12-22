@@ -8,7 +8,12 @@
 
 <script>
 export default {
-  props: ['texto']
+  created() {
+    console.log('created')
+  },
+  destroyed() {
+    console.log('destroyed')
+  }
 }
 </script>
 
