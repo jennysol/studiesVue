@@ -27,7 +27,7 @@ export default {
 <style>
 	body {
 		font-family: 'Lato', sans-serif;
-		background: linear-gradient(to right, rgb(22, 34, 42), rgb(58, 96, 115));
+		background: linear-gradient(to right, rgb(14, 13, 13), rgb(53, 16, 7));
 		color: #FFF;
 	}
 
