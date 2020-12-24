@@ -1,11 +1,25 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
+    <!-- Representar tasks em Data para outro componente -->
+    <TaskGrid :tasks="tasks" /> 
 	</div>
 </template>
 
 <script>
+import TaskGrid from './components/TaskGrid.vue'
+
 export default {
+  components: { TaskGrid},
+
+	data() {
+		return {
+      tasks: [
+        {name: 'Lavar a louça', pending: false},
+        {name: 'Comprar blusa', pending: true},
+      ]
+		}
+	}
 
 }
 </script>
