@@ -1,7 +1,7 @@
 <template>
-    <div class="caixa vermelho">
-        Conteúdo do Componente Vermelho
-    </div>
+  <div class="caixa vermelho">
+      <slot/>
+  </div>
 </template>
 
 <script>

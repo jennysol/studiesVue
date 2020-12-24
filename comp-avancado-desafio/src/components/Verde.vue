@@ -1,7 +1,7 @@
 <template>
-    <div class="caixa verde">
-        Conteúdo do Componente Verde
-    </div>
+  <div class="caixa verde">
+      <slot/>
+  </div>
 </template>
 
 <script>
