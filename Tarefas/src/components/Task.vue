@@ -1,8 +1,11 @@
 <template>
-  <div class="task" :class="stateClass">
-      <p>{{ task.name }}</p>
-  </div>
+    <div @click="$emit('taskStateChanged', task)"
+        class="task" :class="stateClass">
+        <span @click.stop="$emit('taskDeleted', task)" class="close">x</span>
+        <p>{{ task.name }}</p>
+    </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -19,30 +22,52 @@ export default {
 }
 </script>
 <style>
-  .task {
-    box-sizing: border-box;
-    width: 350px;
-    height: 150px;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 2rem;
-    font-weight: 300;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.task {
+  position: relative;
+  box-sizing: border-box;
+  width: 350px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: 300;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .pending {
-    border-left: 12px solid rgb(78, 68, 9);
-    background-color: rgb(88, 78, 17);
-  }
+.pending {
+  border-left: 12px solid #4b130f;
+  background-color: #4d1a17;
+}
 
-  .done {
-    color: rgb(182, 180, 173);
-    border-left: 12px solid rgb(34, 51, 34);
-    background-color: rgb(33, 54, 33);
-    text-decoration: line-through;
-  }
+.done {
+  color: #DDD;
+  border-left: 12px solid #193f19;
+  background-color: #174e19;
+  text-decoration: line-through;
+}
+
+.pending .close {
+  background-color: #3f1512;
+}
+
+.done .close {
+  background-color: #0e310d;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
 </style>
