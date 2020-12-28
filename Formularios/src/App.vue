@@ -34,8 +34,13 @@
 					<span><input type="radio" value="outro" v-model="produto"> Outro</span>
 				</Rotulo>
 				<Rotulo nome="Prioridade">
-					<select name="" id="">
-						<option></option>
+					<select v-model="prioridade">
+						<option v-for="prioridade in prioridades"
+							:value="prioridade.codigo" 
+							:key="prioridade.codigo"
+							:selected="prioridade.codigo === 3"> 
+								{{ prioridade.nome }}
+						</option>
 					</select>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
@@ -58,21 +63,22 @@
 				<Rotulo nome="Mensagem">
 					<span style="white-space: pre;">{{ mensagem }}</span>
 				</Rotulo>
+
 				<Rotulo nome="Características do Problema">
-					<span>
-						<ul>
-							<li v-for="c in caracteristicas" :key="c">{{ c }}</li>
-						</ul>
-					</span>
+					<span class="mr-4"><input type="checkbox" v-model="caracteristicas"
+						value="reproduzivel"> Reproduzível</span>
+					<span><input type="checkbox" v-model="caracteristicas"
+						value="intermitente"> Intermitente</span>
 				</Rotulo>
-				<!-- <Rotulo nome="Marque as Opções">
+				
+				<Rotulo nome="Marque as Opções">
 					<span>???</span>
-				</Rotulo> -->
+				</Rotulo>
 				<Rotulo nome="Qual produto?">
 					<span>{{ produto }}</span>
 				</Rotulo>
 				<Rotulo nome="Prioridade">
-					<span>???</span>
+					<span>{{ prioridade }}</span>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
 					<span>???</span>
@@ -94,6 +100,12 @@ export default {
 			mensagem: '',
 			caracteristicas: [],
 			produto: 'web',
+			prioridade: 1,
+			prioridades: [
+				{ codigo: 1, nome: 'Baixa' },
+				{ codigo: 2, nome: 'Moderada' },
+				{ codigo: 3, nome: 'Alta' }
+			],
 			usuario: {
 				email: '',
 				senha: '',
