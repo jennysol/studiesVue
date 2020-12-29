@@ -4,14 +4,7 @@
 		<div class="conteudo">
 			<form class="painel" v-if="!enviado">
 				<div class="cabecalho">Formulário</div>
-				<Rotulo nome="Nome">
-					<input type="text" v-model="nome">
-				</Rotulo>
-
-				<Rotulo nome="Sobrenome">
-					<input type="text" v-model="sobrenome">
-				</Rotulo>
-
+				<NomeCompleto v-model="nomeCompleto"/>
 				<Rotulo nome="Email">
 					<input type="text" v-model="email">
 				</Rotulo>
@@ -28,18 +21,15 @@
 				<!-- Mostrar a área de Resultado apenas quando o formulário for submetido -->
 				<hr>
 				<button @click.prevent="enviar">Enviar</button>
-				<!-- Exercicio 03 -->
-				<!-- Crie um componente personalizado NomeCompleto -->
-				<!-- Esse componente deve receber Nome e Sobrenome -->
 			</form>
 			<div class="painel" v-else>
 				<div class="cabecalho">Resultado</div>
 				<Rotulo nome="Nome">
-					<span>{{ nome }}</span>
+					<span>{{ nomeCompleto.nome }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Sobrenome">
-					<span>{{ sobrenome }}</span>
+					<span>{{ nomeCompleto.sobrenome }}</span>
 				</Rotulo>
 
 				<Rotulo nome="Email">
@@ -60,13 +50,17 @@
 
 <script>
 import Rotulo from './components/Rotulo.vue'
-
+import NomeCompleto from './components/NomeCompleto.vue'
 export default {
 	name: 'app',
-	components: { Rotulo },
+	components: { Rotulo, NomeCompleto },
 	data() {
 		return {
 			enviado: false,
+			nomeCompleto: {
+				nome: '',
+				sobrenome: '',
+			},
 			nome: '',
 			sobrenome: '',
 			email: '',
