@@ -2,9 +2,9 @@
 	<div id="app">
 		<h1>Diretivas (Desafio)</h1>
 		<hr>
-		<!-- Exercício -->
-		<!-- Escreva uma diretiva que funcione com o v-on (escute eventos) -->
 		<button v-quando:click="acao">Executar</button>
+		<p v-quando:mouseenter="mouseEnter"
+			v-quando:mouseleave="mouseLeave">Teste mouse event!</p>
 	</div>
 </template>
 
@@ -13,15 +13,25 @@ export default {
 	directives: {
 		quando: {
 			bind(el, binding) {
-				el.onclick = function(e) {
-					binding.value()
-				}
+				// el.onclick = function(e) {
+				// 	binding.value()
+				// }
+
+				const tipo = binding.arg
+				const fn = binding.value
+				el.addEventListener(tipo, fn) // Passar essa função quando o evento de um tipo específico
 			}
 		}
 	},
 	methods: {
 		acao() {
 			alert('Ação executada!')
+		},
+		mouseEnter() {
+			console.log('Ação executada no Mouse Enter!');
+		},
+		mouseLeave() {
+			console.log('Ação executada no Mouse Leave!');
 		}
 	}
 }
