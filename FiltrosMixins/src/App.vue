@@ -2,6 +2,7 @@
 	<div id="app">
 		<h1>Filtros & Mixins</h1>
 		<hr>
+		<p>{{ usuarioLogado }}</p>
 		<p>{{ cpfDoAluno | cpf | inverter }}</p>
 		<input type="text" :value="cpfDoAluno | cpf">
 		<hr>
@@ -18,8 +19,12 @@
 
 <script>
 import Frutas from './Frutas'
+import FrutasMixins from './FrutasMixins'
+import usuarioMixins from './usuarioMixins'
+
 export default {
 	components: { Frutas },
+	mixins: [FrutasMixins, usuarioMixins],
 	filters: {
 		cpf(valor) {
 			const arr = valor.split('') //Adicionando um array para cada posição
@@ -32,16 +37,10 @@ export default {
 	data() {
 		return {
 			cpfDoAluno: '60070080090',
-			fruta:'',
-            frutas: ['banana','maça','laranja']
+			frutas: ['laranja'], //Oque está dentro do data() do component tem prioridade
 		}
 	},
-	methods: {
-		add() {
-			this.frutas.push(this.fruta)
-			this.fruta = ''
-		}
-    }
+	
 }
 </script>
 
