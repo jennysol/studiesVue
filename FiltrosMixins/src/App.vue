@@ -40,7 +40,9 @@ export default {
 			frutas: ['laranja'], //Oque está dentro do data() do component tem prioridade
 		}
 	},
-	
+	 created() {
+        console.log('Created - App!')
+    },
 }
 </script>
 
