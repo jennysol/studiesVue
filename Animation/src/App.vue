@@ -10,7 +10,8 @@
 		</transition>
 
     <transition name="slide" type="animation">
-			<b-alert variant="info" show v-if="exibir">{{ msg }}</b-alert>
+			<b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
+      Transição entre dois elementos é mais desejavél a utilização de v-if
 		</transition>
 	</div>
 </template>
