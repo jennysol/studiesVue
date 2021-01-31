@@ -57,6 +57,12 @@
     <transition name="fade" mode="out-in">
         <component :is="componenteSelecionado"></component>
     </transition>
+
+    <hr>
+    <b-button @click="adicionarAluno" class="mb-4">Add</b-button>
+    <b-list-group v-for="(aluno, i) in alunos" :key="aluno">
+      <b-list-group-item @click="removeAluno(i)">{{ aluno }}</b-list-group-item>
+    </b-list-group>
   
 
 	</div>
@@ -72,6 +78,7 @@ export default {
   },
 	data() {
 		return {
+      alunos: ['Roberto', 'Julia', 'Teresa', 'Paulo'],
 			msg: 'Uma mensagem de informação para o usuário',
       exibir: false,
       exibir2: true,
@@ -81,6 +88,13 @@ export default {
 		}
   },
   methods: {
+    adicionarAluno() {
+      const s = Math.random().toString(36).substring(2)
+      this.alunos.push(s)
+    },
+    removeAluno(indice) {
+      this.alunos.splice(indice, 1)
+    },
     animar(el, done, negativo) {
       let rodada = 1
       const temporizador = setInterval(() => {
