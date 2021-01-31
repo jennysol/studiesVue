@@ -10,9 +10,16 @@
 		</transition>
 
     <transition name="slide" type="animation" appear>  
-      appear para fazer carregamento da animação iniciada como true
+      <!-- appear para fazer carregamento da animação iniciada como true -->
 			<b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
       <!-- Transição entre dois elementos é mais desejavél a utilização de v-if -->
+		</transition>
+
+     <transition 
+      enter-active-class="animated bounce"
+      leave-active-class="animated shake"
+     >  
+			<b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
 		</transition>
 	</div>
 </template>
@@ -23,7 +30,7 @@ export default {
 	data() {
 		return {
 			msg: 'Uma mensagem de informação para o usuário',
-			exibir: true,
+			exibir: false,
 		}
 	}
 
