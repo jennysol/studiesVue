@@ -23,21 +23,6 @@
 		</transition> -->
 
     <hr>
-    <b-select v-model="tipoAnimacao" class="mb-4">
-      <option value="fade">Fade</option>
-      <option value="slide">Slide</option>
-    </b-select>
-
-    <transition :name="tipoAnimacao">
-			<b-alert variant="info" show v-show="exibir">{{ msg }}</b-alert>
-		</transition>
-
-    <transition :name="tipoAnimacao" mode="out-in">
-			<b-alert variant="info" show v-if="exibir" key="info">{{ msg }}</b-alert>
-			<b-alert variant="warning" show v-else key="warn">{{ msg }}</b-alert>
-		</transition>
-
-    <hr>
     <button @click="exibir2 = !exibir2">Alternar</button>
     <transition
       :css="false"
@@ -53,12 +38,38 @@
     >
       <div  v-if="exibir2" class="caixa"></div>
     </transition>
+
+    <hr>
+    <div class="mb-4">
+      <b-button 
+        class="mr-2"
+        variant="primary" 
+        @click="componenteSelecionado = 'AlertaInfo'"
+      > Info
+      </b-button>
+
+      <b-button 
+        variant="secondary" 
+        @click="componenteSelecionado = 'AlertaAdvertencia'"
+        > Advertência
+      </b-button>
+    </div>
+    <transition name="fade" mode="out-in">
+        <component :is="componenteSelecionado"></component>
+    </transition>
+  
+
 	</div>
 </template>
 
 <script>
-
+import AlertaAdvertencia from './AlertaAdvertencia'
+import alertaInfo from './AlertaInfo'
 export default {
+  components: {
+    AlertaAdvertencia,
+    alertaInfo,
+  },
 	data() {
 		return {
 			msg: 'Uma mensagem de informação para o usuário',
@@ -66,6 +77,7 @@ export default {
       exibir2: true,
       tipoAnimacao: 'fade',
       larguraBase: 0,
+      componenteSelecionado: 'AlertaInfo'
 		}
   },
   methods: {
