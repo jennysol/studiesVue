@@ -1,12 +1,30 @@
 <template>
 	<div id="app">
 		<h1>Super Quiz</h1>
+		<Question v-if="questionMode"
+			:question="questions[currentQuestion]"
+		/>
+		<Result v-else
+			:result="result"
+		/>
 	</div>
 </template>
 
 <script>
-export default {
+import questions from './util/questions'
+import Question from './components/Question'
+import Result from './components/Result'
 
+export default {
+	components: {Question, Result},
+	data() {
+		return {
+			result: false,
+			questionMode: true,
+			questions, //Ṕassando o array de util
+			currentQuestion: 0 //Indíce da questão
+		}
+	}
 }
 </script>
 
