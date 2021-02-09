@@ -45,7 +45,11 @@ export default {
 	},
 	methods: {
 		save() {
-			console.log(this.user);
+			this.$http.post('user.json', this.user)
+				.then(resp => {
+					this.user.name = '',
+					this.user.email = ''
+				})
 		}
 	}
 	// created() {
