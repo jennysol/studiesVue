@@ -29,7 +29,22 @@
 			>
 				Salvar
 			</b-button>
+			<b-button
+				@click="getUsers"
+				size="lg"
+				variant="success"
+				class="ml-2"
+			>
+				Trazer dados
+			</b-button>
 		</b-card>
+		<hr>
+		<b-list-group>
+			<b-list-group-item v-for="(user, id) in users" :key="id">
+				<strong>Nome:</strong> {{ user.name }} <br/>
+				<strong>Email:</strong> {{ user.email }}<br/>
+			</b-list-group-item>
+		</b-list-group>
 	</div>
 </template>
 
@@ -37,11 +52,15 @@
 export default {
 	data() {
 		return {
+			users: [],
 			user : {
 				name: '',
 				email:'',
 			}
 		}
+	},
+	mounted(){
+		this.getUsers();
 	},
 	methods: {
 		save() {
@@ -49,6 +68,12 @@ export default {
 				.then(resp => {
 					this.user.name = '',
 					this.user.email = ''
+				})
+		},
+		getUsers() {
+			this.$http.get('user.json')
+				.then(response => {
+					this.users = response.data
 				})
 		}
 	}
