@@ -6,12 +6,12 @@
 
 <script>
 export default {
-	created() {
-		this.$http.post('usuarios.json', {
-			name: 'Jennifer',
-			email: 'jennyssol@gmail.com'
-		}).then(res => console.log(res))
-	}
+	// created() {
+	// 	this.$http.post('usuarios.json', {
+	// 		name: 'Jennifer',
+	// 		email: 'jennyssol@gmail.com'
+	// 	}).then(res => console.log(res))
+	// }
 }
 </script>
 
