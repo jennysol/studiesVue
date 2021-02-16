@@ -44,6 +44,20 @@
 				<strong>Nome:</strong> {{ user.name }} <br/>
 				<strong>Email:</strong> {{ user.email }}<br/>
 				<strong>Id:</strong> {{ id }}<br/>
+        <b-button 
+          variant="warning" 
+          size="lg" 
+          @click="load(id)"
+        >
+          Editar
+        </b-button>
+        <b-button 
+          variant="danger" 
+          size="lg" 
+          class="ml-2"
+          @click="delet(id)"
+        > Excluir
+        </b-button>
 			</b-list-group-item>
 		</b-list-group>
 	</div>
@@ -54,6 +68,7 @@ export default {
 	data() {
 		return {
 			users: [],
+      id: null,
 			user : {
 				name: '',
 				email:'',
@@ -64,20 +79,30 @@ export default {
 		this.getUsers();
 	},
 	methods: {
+    clear() {
+      this.user.name = ''
+      this.user.email = ''
+      this.id = null
+    },
 		save() {
-			this.$http.post('user.json', this.user)
-				.then(resp => {
-					this.user.name = '',
-					this.user.email = ''
-				})
+      const method = this.id ? 'patch' : 'post'
+      const endUrl = this.id ? `/${this.id}.json` : '.json'
+      this.$http[method](`user${endUrl}`, this.user)
+      .then(() => this.clear())
 		},
 		getUsers() {
 			this.$http.get('user.json')
 				.then(response => {
 					this.users = response.data
-					console.log(response.data)
 				})
-		}
+		},
+    load(id) {
+      this.id = id
+      this.user = { ...this.users[id] } // A partir de users por id, criar um novo objeto para ñ alterar a instancia
+    },
+    delet(id) {
+      this.$http.delete(`/user/${id}.json`).then(() => this.clear())
+    },
 	}
 	// created() {
 	// 	this.$http.post('usuarios.json', {
