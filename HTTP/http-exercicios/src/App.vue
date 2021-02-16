@@ -1,6 +1,8 @@
 <template>
 	<div id="app" class="container">
 		<h1>HTTP com Axios</h1>
+    <b-alert show dismissible v-for="message in messages" :key="message.text"
+    :variant="message.type">{{message.text}}</b-alert>
 		<b-card>
 			<b-form-group label="Nome:">
 				<b-form-input 
@@ -67,6 +69,7 @@
 export default {
 	data() {
 		return {
+      messages: [],
 			users: [],
       id: null,
 			user : {
@@ -83,12 +86,19 @@ export default {
       this.user.name = ''
       this.user.email = ''
       this.id = null
+      this.messages = []
     },
 		save() {
       const method = this.id ? 'patch' : 'post'
       const endUrl = this.id ? `/${this.id}.json` : '.json'
       this.$http[method](`user${endUrl}`, this.user)
-      .then(() => this.clear())
+      .then(() => {
+        this.clear()
+        this.messages.push({
+          text: 'Operação realizada com sucesso!',
+          type: 'success'
+        })
+      })
 		},
 		getUsers() {
 			this.$http.get('user.json')
@@ -102,6 +112,12 @@ export default {
     },
     delet(id) {
       this.$http.delete(`/user/${id}.json`).then(() => this.clear())
+      .catch (err => {
+        this.messages.push({
+          text: 'Erro ao excluir!',
+          type: 'danger'
+        })
+      })
     },
 	}
 	// created() {
