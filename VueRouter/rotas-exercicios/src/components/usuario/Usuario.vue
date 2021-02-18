@@ -9,17 +9,19 @@
 
 <script>
 export default {
-  data() {
-    return {
-      id: this.$route.params.id
-    }
-  },
-  watch: {
-    // eslint-disable-next-line no-unused-vars
-    $route(to, from) {
-      this.id = to.params.id
-    }
-  },
+  props: ['id'],
+  
+  // data() {
+  //   return {
+  //     id: this.$route.params.id
+  //   }
+  // },
+  // watch: {
+  //   // eslint-disable-next-line no-unused-vars
+  //   $route(to, from) {
+  //     this.id = to.params.id
+  //   }
+  // },
   methods: {
       goStart() {
         // this.$router.push('/')
