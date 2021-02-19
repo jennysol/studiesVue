@@ -9,7 +9,7 @@
           ><a>Início</a>
           </router-link>
           <router-link 
-            to="/usuario/10" 
+            to="/usuario" 
             tag="li"
             active-class="active"
           ><a>Usúario</a>
