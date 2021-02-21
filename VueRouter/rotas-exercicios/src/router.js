@@ -12,6 +12,7 @@ Vue.use(Router)
 export default new Router({
     routes: [{
       path: '/',
+      name: 'inicio',
       component: Inicio
     }, {
       path: '/usuario',
@@ -20,7 +21,12 @@ export default new Router({
       children: [
         { path: '', component: UsuarioLista},
         { path: ':id', component: UsuarioDetalhe, props: true},
-        { path: ':id/editar', component: UsuarioEditar, props: true},
+        { 
+          path: ':id/editar', 
+          component: UsuarioEditar, 
+          props: true,
+          name: 'editarUsuario'
+        },
       ]
     },
   ]
