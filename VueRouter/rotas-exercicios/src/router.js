@@ -10,6 +10,17 @@ import UsuarioEditar from './components/usuario/UsuarioEditar'
 Vue.use(Router)
 
 export default new Router({
+    mode: 'history',
+    scrollBehavior(to, from, savedPosition) {
+      // return { x: 0, y: 1000 }
+      if (savedPosition) {
+        return savedPosition
+      } else if (to.hash) {
+          return { selector: to.hash }
+       }
+      return{ x: 0, y: 0 }
+
+    },
     routes: [{
       path: '/',
       name: 'inicio',
