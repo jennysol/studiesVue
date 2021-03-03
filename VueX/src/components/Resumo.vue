@@ -12,8 +12,7 @@
 export default {
     computed: {
         total() {
-            return this.produtos.map(p => p.quantidade * p.preco)
-                .reduce((total, atual) => total + atual, 0)
+            return this.$store.getters.valorTotal
         },
          produtos() { // Atributo/Possível de acesso entre propriedades computadas
             return this.$store.state.produtos
