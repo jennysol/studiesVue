@@ -33,11 +33,11 @@ export default {
         ...mapGetters({
             total: 'valorTotal'
         }),
-        total() {
-            return this.$store.getters.valorTotal
-        },
+        // total() {
+        //     return this.$store.getters.valorTotal
+        // },
         produtos() { // Atributo/Possível de acesso entre propriedades computadas
-            return this.$store.state.produtos
+            return this.$store.state.carrinho.produtos
         },
     },
 }
